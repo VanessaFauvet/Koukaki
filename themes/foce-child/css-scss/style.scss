@@ -1,0 +1,426 @@
+main, footer {
+    overflow: hidden;
+}
+
+/********** ETAPE 1 **********/
+/* Effet fade-in des sections */
+.fade-in {
+    opacity: 0;
+    transition-duration: 2s;
+    animation: ease-in forwards;
+}
+
+/* Effet de rotation des fleurs */
+.story__article::after, .story h2::after, #studio h2::before, #studio h2::after, .site-footer::before, .site-footer::after, .site-footer ul::after, .nomination::before, .nomination::after {
+    animation: rotation 10s infinite linear;
+}
+
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+// Taille des fleurs
+.story h2::after {
+    width: 154px;
+    height: 154px;
+}
+
+.story__article::after {
+    width: 188px;
+    height: 188px;
+}
+
+#studio h2::before {
+    width: 203px;
+    height: 203px;
+}
+
+#studio h2::after {
+    width: 109px;
+    height: 109px;
+}
+
+.site-footer::after {
+    width: 173px;
+    height: 173px;
+}
+
+/* Effet d'apparition des titres */
+.appear {
+    opacity: 0;
+    transform: translateY(50px);
+    transition-duration: 2s;
+}
+
+span.appear {
+    display: block;
+}
+
+#studio h2 {
+    overflow: visible;
+}
+
+.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Section des nominations */
+.nomination {
+    position: relative;
+    padding: 150px 0 50px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px 0;
+    justify-content: center;
+    align-items: center;
+}
+
+.nomination-txt {
+    position: relative;
+}
+
+.nomination-img {
+    height: 100%;
+}
+
+.nomination-txt h3 {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    line-height: 3.2rem;
+    text-align: left;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.nomination::before {
+    content: url("../assets/images/Sunflower.png");
+    position: absolute;
+    left: 10em;
+    top: 4em;
+  }
+  
+.nomination::after {
+    content: url("../assets/images/orchid.png");
+    position: absolute;
+    right: -4em;
+    top: -3em;
+}
+
+.site-footer {
+    &::before,
+    &::after {
+      display: none;
+    }
+}
+
+
+/********** ETAPE 2 **********/
+.banner { 
+    position: relative; /*ok*/
+    object-fit: contain; /*ok*/
+    background-image: none; /*ok*/
+    z-index: 1; /*ok*/
+}
+
+.background-image, .background-logo {
+    position: absolute; /*ok*/
+}
+
+.background-video {
+    z-index: 1;
+    @media (max-width: 700px) {
+        display: none; /*ok*/
+      }
+}
+
+.background-logo {
+    z-index: 2; /*ok*/
+    animation: float 2s ease-in-out infinite; /*ok*/
+}
+
+@keyframes float {
+    0% { 
+        transform: translate(0,  0px);  /*ok*/
+    }
+    50%  { 
+        transform: translate(0, 10px); /*ok*/
+    }
+    100%   { 
+        transform: translate(0, -0px); /*ok*/
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .banner {
+        min-height: 500px;
+    }
+
+    .background-image {
+        width: 100%!important;
+        top: 70px;
+    }
+
+    .main-navigation {
+        height: 80px;
+    }
+
+    .background-logo {
+        margin-top: -120px!important;
+        width: 30%;
+    }
+
+    body {
+        height: 100vh!important;
+    }
+  }
+
+/********** ETAPE 3 **********/
+.mySwiper {
+    width: 75vw;
+    display: flex;
+    justify-content: left;
+}
+
+.swiper-slide img {
+    opacity: 0;
+    transition-duration: 500ms;
+    transform: translate3d(0px, 0px, -105px) rotateX(0deg) rotateY(0deg) scale(1); 
+}
+
+.swiper-slide-visible img {
+    opacity: 1;
+}
+
+.mySwiper h3 {
+    padding: 1.5em 2em;
+    background-position: left;
+    text-align: left;
+}
+
+
+/********** ETAPE 4 **********/
+.story #place {
+    background-image: url("../assets/images/Studio_Koukaki-image_place.png"); /*ok*/
+}
+
+.clouds {
+    position: absolute;  
+    filter: blur(11px); 
+    right: 100px;
+    top: 50px;
+    @media (max-width: 700px) {
+        right: -100px;
+        top: 70px;
+      }
+}
+
+.big-cloud {
+    height: 122px;
+}
+
+.little-cloud {
+    margin-left: -200px;
+    margin-top: 70px;
+    height: 55px;
+}
+
+
+/********** ETAPE 5 **********/
+.main-navigation.toggled ul {
+	display: flex !important;
+}
+
+#site-navigation {
+    position: relative;
+}
+
+.burger {
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 400;
+    font-size: 0.4rem;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+}
+  
+.burger-icon {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    gap: 8px;
+    width: 40px;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    top: 0;
+    right: 5em;
+    cursor: pointer;   
+}
+
+.burger-icon .line {
+    height: 2px;
+    background-color: #000;
+    display: block;
+    width: 100%;
+    margin: 0;
+    transition: all .3s ease-in-out;
+}
+
+.burger-content {
+    position: relative;
+    height: calc(100vh - 80px);
+    width: 100%;
+    font-size: 2.5em;
+    background: #FFF5E9;
+    display: none;
+}
+
+.open {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.burger-content ul {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    margin-top: -40px;
+}
+
+.burger-content li {
+    font-size: 4em;
+    line-height: 2em;
+}
+
+.burger-footer {
+    margin-bottom: 20px;
+}
+
+.burger-content li>a:hover, .burger-logo {
+    filter: drop-shadow(0px 0px 5px #ff5c00);
+}
+
+.burger-logo {
+    width: 154px;
+    margin-top: 40px;
+}
+
+.burger-icon.close .line:nth-child(2) {
+    opacity: 0;
+}
+
+.burger-icon.close .line:first-child {
+    transform: rotate(45deg) translate3d(8px, 6px, 0);
+}
+
+.burger-icon.close .line:last-child {
+    transform: rotate(-45deg) translate3d(8px, -6px, 0);
+}
+
+.hibiscus {
+    position: absolute;
+    bottom: -19.5em;
+    right: -18em;
+    filter: blur(2px);
+    animation: rotation 10s infinite linear;
+    width: 500px;
+    height: 500px;
+    @media (max-width: 700px) {
+        display: none;
+      }
+}
+
+.orchid {
+    position: absolute;
+    top: 6em;
+    left: -4.5em;
+    animation: rotation 10s infinite linear;
+    width: 172px;
+    height: 168px;
+    @media (max-width: 700px) {
+        display: none;
+      }
+}
+
+.random-flower {
+    position: absolute;
+    width: 75px;
+    height: 75px;
+    top: 28em;
+    right: -2.25em;
+    animation: rotation 10s infinite linear;
+    @media (max-width: 700px) {
+        display: none;
+      }
+}
+
+.flower {
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    top: 32em;
+    left: 17em;
+    animation: rotation 10s infinite linear;
+    @media (max-width: 700px) {
+        display: none;
+      }
+}
+
+.sunflower {
+    position: absolute;
+    top: 6em;
+    right: 15em;
+    animation: rotation 10s infinite linear;
+    width: 216px;
+    height: 216px;
+    @media (max-width: 700px) {
+        display: none;
+      }
+}
+
+.black-cat {
+    position: absolute;
+    top: 32em;
+    right: 15em;
+    animation: float 3s ease-in-out infinite alternate;
+    width: 155px;
+    height: 148px;
+    @media (max-width: 700px) {
+        display: none;
+      }
+}
+
+.purple-cat {
+    position: absolute;
+    width: 109px;
+    height: 98px;
+    top: 15em;
+    left: 22em;
+    animation: float 3s ease-in-out infinite alternate;
+    @media (max-width: 700px) {
+        display: none;
+      }
+}
+
+.yellow-cat {
+    position: absolute;
+    bottom: 5em;
+    left: 7em;
+    animation: float 3s ease-in-out infinite alternate;
+    @media (max-width: 700px) {
+        display: none;
+      }
+}
